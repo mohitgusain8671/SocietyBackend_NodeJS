@@ -1,4 +1,5 @@
 const db = require('../models');
+const { where } = require("sequelize");
 
 // create main Model
 const User = db.User
@@ -10,7 +11,7 @@ exports.createUser = async (req, res) => {
       res.status(201).json(user);
     } catch (error) {
       res.status(400).json({ error: error.message });
-    }
+    } 
   };
 
 // Get all users
@@ -36,6 +37,22 @@ exports.getUserById = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+
+// Find users by name
+exports.findUsersByName = async (req, res) => {
+  try {
+    const name = req.query.Username;
+    console.log(name);
+    const users = await User.findOne({
+      where: {
+        Username: name
+      }
+    });
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+}
 
 // Update a user
 exports.updateUser = async (req, res) => {

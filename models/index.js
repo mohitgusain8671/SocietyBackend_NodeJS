@@ -30,9 +30,9 @@ db.User = require('./user')(sequelize, Sequelize);
 db.Roles = require('./roles')(sequelize, Sequelize)
 db.SocietyEvents = require('./societyEvents')(sequelize, Sequelize)
 db.StudentProfile = require('./studentProfile')(sequelize, Sequelize)
-db.StudentProfile = require('./studentAchievements')(sequelize, Sequelize)
-db.StudentProfile = require('./societyAchievements')(sequelize, Sequelize)
-db.StudentProfile = require('./societyProfile')(sequelize, Sequelize)
+db.StudentAchievements = require('./studentAchievements')(sequelize, Sequelize)
+db.SocietyAchievements = require('./societyAchievements')(sequelize, Sequelize)
+db.SocietyProfile = require('./societyProfile')(sequelize, Sequelize)
 
 db.sequelize
   .sync({alter: true},{force: false})
