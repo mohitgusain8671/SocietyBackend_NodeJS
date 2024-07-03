@@ -1,6 +1,5 @@
 const { where } = require("sequelize");
 let db = require("../models");
-// const studentProfile = require("../models/studentProfile");
 
 const studentProfile = db.StudentProfile;
 
