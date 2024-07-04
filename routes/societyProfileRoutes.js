@@ -30,6 +30,7 @@ const {
         SocietyHead,
         SocietyCoordinator,
         DateOfRegistration,
+        SocietyDescription,
     } = req.body;
     AddNewSociety(
         SocietyID,
@@ -38,6 +39,7 @@ const {
         SocietyHead,
         SocietyCoordinator,
         DateOfRegistration,
+        SocietyDescription,
     )
       .then((item) => {
         res.status(200).json(item);
@@ -57,6 +59,7 @@ const {
         SocietyHead,
         SocietyCoordinator,
         DateOfRegistration,
+        SocietyDescription,
     } = req.body;
     UpdateSociety(
         SocietyID,
@@ -65,6 +68,7 @@ const {
         SocietyHead,
         SocietyCoordinator,
         DateOfRegistration,
+        SocietyDescription,
     )
       .then((item) => {
         res.status(200).json(item);

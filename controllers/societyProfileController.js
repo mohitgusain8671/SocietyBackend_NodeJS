@@ -11,6 +11,7 @@ let AddNewSociety = async (
     SocietyHead,
     SocietyCoordinator,
     DateOfRegistration,
+    SocietyDescription,
 ) => {
   try {
     let data = await societyProfile.create({
@@ -20,6 +21,7 @@ let AddNewSociety = async (
         SocietyHead,
         SocietyCoordinator,
         DateOfRegistration,
+        SocietyDescription,
     });
     return data;
   } catch (e) {
@@ -36,6 +38,7 @@ let UpdateSociety = async (
     SocietyHead,
     SocietyCoordinator,
     DateOfRegistration,
+    SocietyDescription,
 ) => {
   try {
     let data = await societyProfile.update(
@@ -46,6 +49,7 @@ let UpdateSociety = async (
         SocietyHead,
         SocietyCoordinator,
         DateOfRegistration,
+        SocietyDescription,
       },
       {
         where: {

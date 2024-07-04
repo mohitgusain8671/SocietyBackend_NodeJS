@@ -28,6 +28,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.DATE,
         allowNull: false
       },
+      SocietyDescription: {
+        type: DataTypes.STRING,
+        allowNull: false
+      }
     },
     {
       tableName: "societyprofiles", // Explicit table name
