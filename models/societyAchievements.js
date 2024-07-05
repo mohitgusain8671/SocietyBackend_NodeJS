@@ -1,17 +1,48 @@
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     SocietyAchievements:
+ *       type: object
+ *       required:
+ *         - SocietyID
+ *         - SocietyAchievementID
+ *         - Title
+ *         - Description
+ *         - DateAchieved
+ *       properties:
+ *         SocietyID:
+ *           type: integer  
+ *           description: The ID of the society
+ *         SocietyAchievementID:
+ *           type: integer
+ *           description: The Achievement id of the student
+ *         Title:
+ *           type: string
+ *           description: A short title for the achievement
+ *         Description:
+ *           type: string
+ *           description: A brief description of te achievement
+ *         DateAchieved:
+ *           type: string
+ *           format: date-time
+ *           description: The achievement date
+ */
+
 const { DATE } = require("sequelize")
 
 module.exports = (sequelize, DataTypes) => {
 
     const SocietyAchievement = sequelize.define("SocietyAchievement", {
-      EnrollmentNo: {
+      SocietyID: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
       },
-      AchievementID: {
+      SocietyAchievementID: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        primaryKey: true,
+        // primaryKey: true,
       },
       Title: {
         type: DataTypes.STRING,

@@ -1,5 +1,36 @@
-const { DATE } = require("sequelize")
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     StudentAchievements:
+ *       type: object
+ *       required:
+ *         - EnrollmentNo
+ *         - AchievementID
+ *         - Title
+ *         - Description
+ *         - DateAchieved
+ *       properties:
+ *         EnrollmentNo:
+ *           type: integer  
+ *           description: The Enrollment No. of the student assigned by the college
+ *         AchievementID:
+ *           type: integer
+ *           description: The Achievement id of the student
+ *         Title:
+ *           type: string
+ *           description: A short title for the achievement
+ *         Description:
+ *           type: string
+ *           description: A brief description of te achievement
+ *         DateAchieved:
+ *           type: string
+ *           format: date-time
+ *           description: The achievement date
+ */
 
+
+const { DATE } = require("sequelize")
 module.exports = (sequelize, DataTypes) => {
 
     const StudentAchievement = sequelize.define("StudentAchievement", {

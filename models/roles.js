@@ -1,3 +1,22 @@
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Roles:
+ *       type: object
+ *       required:
+ *         - RoleID
+ *         - Rolename
+ *       properties:
+ *         RoleID:
+ *           type: integer  
+ *           description: The ID of the role assigned to the student
+ *         Rolename:
+ *           type: string
+ *           description: The name of the role assigned to the student
+ */
+
+
 module.exports = (sequelize, DataTypes) => {
 
     const Roles = sequelize.define("Roles", {

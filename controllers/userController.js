@@ -1,90 +1,132 @@
-const db = require('../models');
 const { where } = require("sequelize");
+let db = require("../models");
 
-// create main Model
-const User = db.User
+const user = db.User;
 
-// Create a new user
-exports.createUser = async (req, res) => {
-    try {
-      const user = await User.create(req.body);
-      res.status(201).json(user);
-    } catch (error) {
-      res.status(400).json({ error: error.message });
-    } 
-  };
-
-// Get all users
-exports.getUsers = async (req, res) => {
+//ADD NEW STUDENT
+let AddNewUser = async (
+    UserID,
+    Username,
+    Password,
+    Email,
+    RoleID
+) => {
   try {
-    const users = await User.findAll();
-    res.status(200).json(users);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-};
-
-// Get a user by ID
-exports.getUserById = async (req, res) => {
-  try {
-    const user = await User.findByPk(req.params.id);
-    if (user) {
-      res.status(200).json(user);
-    } else {
-      res.status(404).json({ error: 'User not found' });
-    }
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-};
-
-// Find users by name
-exports.findUsersByName = async (req, res) => {
-  try {
-    const name = req.query.Username;
-    console.log(name);
-    const users = await User.findOne({
-      where: {
-        Username: name
-      }
+    let data = await user.create({
+      UserID,
+      Username,
+      Password,
+      Email,
+      RoleID
     });
-    res.status(200).json(users);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-}
-
-// Update a user
-exports.updateUser = async (req, res) => {
-  try {
-    const user = await User.findByPk(req.params.id);
-    if (user) {
-      await user.update(req.body);
-      res.status(200).json(user);
-    } else {
-      res.status(404).json({ error: 'User not found' });
-    }
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-};
-
-// Delete a user
-exports.deleteUser = async (req, res) => {
-  try {
-    const user = await User.findByPk(req.params.id);
-    if (user) {
-      await user.destroy();
-      res.status(204).json();
-    } else {
-      res.status(404).json({ error: 'User not found' });
-    }
-  } catch (error) {
-    res.status(400).json({ error: error.message });
+    return data;
+  } catch (e) {
+    return e;
   }
 };
 
 
-// module.exports = {
-//     createUser
-// }
+//UPDATE STUDENT
+let UpdateUser = async (
+  UserID,
+  Username,
+  Password,
+  Email,
+  RoleID
+) => {
+  try {
+    let data = await user.update(
+      {
+        UserID,
+        Username,
+        Password,
+        Email,
+        RoleID
+      },
+      {
+        where: {
+          UserID: UserID,
+        },
+      }
+    );
+    return data;
+  } catch (e) {
+    return e;
+  }
+};
+
+
+//GET ALL THE STUDENTS
+let FetchAllUsers = async () => {
+  try {
+    let data = await user.findAll({
+      order: [
+        ["UserID", "ASC"], 
+      ],
+    });
+
+    return data;
+  } catch (e) {
+    return;
+  }
+};
+
+//GET STUDENT BY ID
+let FetchUser = async (UserID) => {
+  if (!UserID) {
+    throw new Error("UserID is required");
+  }
+  try {
+    let user = await user.findOne({
+      where: {
+        UserID,
+      },
+    });
+    console.log(user);
+    return user;
+  } catch (e) {
+    return e;
+  }
+};
+
+
+//delete STUDENT
+let RemoveUser = async (UserID) => {
+  try {
+    // Check if UserId is provided
+    if (!UserID) {
+      throw new Error("UserID is required");
+    }
+
+    // Attempt to delete the user
+    let result = await user.destroy({
+      where: {
+        UserID: UserID,
+      },
+    });
+
+    // Check if the user
+    if (result === 0) {
+      throw new Error(`User with UserID ${UserID} not found`);
+    }
+
+    // Return the result of the deletion operation
+    return {
+      message: `User with UserID ${UserID} successfully deleted`,
+      result: result,
+    };
+  } catch (e) {
+    console.error(`Error removing User with UserID ${UserID}:`, e.message);
+    return {
+      error: e.message,
+    };
+  }
+};
+
+module.exports = {
+  AddNewUser,
+  UpdateUser,
+  RemoveUser,
+  FetchAllUsers,
+  FetchUser,
+};

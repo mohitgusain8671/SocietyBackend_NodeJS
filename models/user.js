@@ -1,3 +1,33 @@
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Users:
+ *       type: object
+ *       required:
+ *         - UserID
+ *         - Username
+ *         - Password
+ *         - Email
+ *         - RoleID
+ *       properties:
+ *         UserID:
+ *           type: integer  
+ *           description: The ID of the user
+ *         Username:
+ *           type: string
+ *           description: The name of the user
+ *         Password:
+ *           type: string
+ *           description: The password set by the user
+ *         Email:
+ *           type: string
+ *           description: The email-id of the user
+ *         RoleID:
+ *           type: integer
+ *           description: The society role of the user
+ */
+
 module.exports = (sequelize, DataTypes) => {
 
   const User = sequelize.define("User", {

@@ -1,5 +1,43 @@
-const { DATE } = require("sequelize")
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     SocietyProfile:
+ *       type: object
+ *       required:
+ *         - SocietyID
+ *         - SocietyType
+ *         - SocietyName
+ *         - SocietyHead
+ *         - SocietyCoordinator
+ *         - DateOfRegistration
+ *         - SocietyDescription
+ *       properties:
+ *         SocietyID:
+ *           type: integer  
+ *           description: The id of the society
+ *         SocietyType:
+ *           type: string
+ *           description: The type of the society
+ *         SocietyName:
+ *           type: string
+ *           description: The name of the society
+ *         SocietyHead:
+ *           type: string
+ *           description: The society head
+ *         SocietyCoordinator:
+ *           type: string
+ *           description: The society coordinator
+ *         DateOfRegistration:
+ *           type: string
+ *           format: date-time
+ *           description: The date when the society registered
+ *         SocietyDescription:
+ *           type: string
+ *           description: The description of the society
+ */
 
+const { DATE } = require("sequelize")
 module.exports = (sequelize, DataTypes) => {
 
     const SocietyProfile = sequelize.define("SocietyProfile", {
@@ -29,7 +67,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false
       },
       SocietyDescription: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false
       }
     },

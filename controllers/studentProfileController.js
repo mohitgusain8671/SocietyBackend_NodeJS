@@ -51,7 +51,8 @@ let UpdateStudent = async (
 ) => {
   try {
     let data = await studentProfile.update(
-      {
+      { 
+        EnrollmentNo,
         UserID,
         FirstName,
         LastName,

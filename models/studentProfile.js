@@ -1,3 +1,55 @@
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     StudentProfile:
+ *       type: object
+ *       required:
+ *         - EnrollmentNo
+ *         - UserID
+ *         - FirstName
+ *         - LastName
+ *         - Branch
+ *         - BatchYear
+ *         - MobileNo
+ *         - ProfilePicture
+ *         - SocietyName
+ *         - SocietyPosition
+ *       properties:
+ *         EnrollmentNo:
+ *           type: integer  
+ *           description: The Enrollment No. of the student assigned by the college
+ *         UserID:
+ *           type: integer
+ *           description: The UserID of the student
+ *         FirstName:
+ *           type: string
+ *           description: The First name of the student
+ *         LastName:
+ *           type: string
+ *           description: The First name of the student
+ *         Branch:
+ *           type: string
+ *           description: The branch of the student
+ *         BatchYear:
+ *           type: integer
+ *           description: The batch year of the student
+ *         MobileNo:
+ *           type: string
+ *           description: The mobile no. of the student
+ *         ProfilePicture:
+ *           type: string
+ *           format: binary
+ *           description: A binary file representing the student's profile image
+ *         SocietyName:
+ *           type: string
+ *           description: The name of the society in which the student is enrolled
+ *         SocietyPosition:
+ *           type: string
+ *           description: The student's position in the assigned society
+ */
+
+
 module.exports = (sequelize, DataTypes) => {
 
     const StudentProfile = sequelize.define("StudentProfile", {
@@ -32,7 +84,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       ProfilePicture: {
-        type: DataTypes.BLOB,
+        type: DataTypes.BLOB('long'),
         allowNull: true,
       },
       SocietyName: {

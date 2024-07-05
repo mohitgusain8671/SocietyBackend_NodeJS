@@ -79,15 +79,15 @@ let FetchAllSociety = async () => {
   }
 };
 
-//GET SOCIETY BY ID
-let FetchSociety = async (SocietyID) => {
-  if (!SocietyID) {
-    throw new Error("SocietyID is required");
+//GET SOCIETY BY Society Coordinator
+let FetchSocietyCoordinator = async (SocietyCoordinator) => {
+  if (!SocietyCoordinator) {
+    throw new Error("SocietyCoordinator name is required");
   }
   try {
     let society = await societyProfile.findOne({
       where: {
-        SocietyID,
+        SocietyCoordinator,
       },
     });
     console.log(society);
@@ -98,8 +98,8 @@ let FetchSociety = async (SocietyID) => {
 };
 
 
-//delete SOCIETY
-let RemoveSociety = async (SocietyID) => {
+//delete SOCIETY through its society id
+let RemoveSocietyID = async (SocietyID) => {
   try {
     // Check if FoodId is provided
     if (!SocietyID) {
@@ -131,10 +131,46 @@ let RemoveSociety = async (SocietyID) => {
   }
 };
 
+
+
+//delete SOCIETY through its society name
+let RemoveSocietyName = async (SocietyCoordinator) => {
+  try {
+    // Check if FoodId is provided
+    if (!SocietyCoordinator) {
+      throw new Error("SocietyCoordinator is required");
+    }
+
+    // Attempt to delete the food item
+    let result = await societyProfile.destroy({
+      where: {
+        SocietyCoordinator: SocietyCoordinator,
+      },
+    });
+
+    // Check if the food item was deleted
+    if (result === 0) {
+      throw new Error(`Society with SocietyCoordinator ${SocietyCoordinator} not found`);
+    }
+
+    // Return the result of the deletion operation
+    return {
+      message: `Society with SocietyCoordinator ${SocietyCoordinator} successfully deleted`,
+      result: result,
+    };
+  } catch (e) {
+    console.error(`Error removing Society with SocietyCoordinator ${SocietyCoordinator}:`, e.message);
+    return {
+      error: e.message,
+    };
+  }
+};
+
 module.exports = {
   AddNewSociety,
   UpdateSociety,
-  RemoveSociety,
+  RemoveSocietyID,
+  RemoveSocietyName,
   FetchAllSociety,
-  FetchSociety,
+  FetchSocietyCoordinator,
 };
