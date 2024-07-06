@@ -306,10 +306,10 @@ Before you begin, ensure you have the following prerequisites installed:
 
    ```
 5. **Starting the server**
-
-   ```bash
+   
    Use the following command to start the server:
-
+   
+   ```bash
    node server.js
 
    ```
