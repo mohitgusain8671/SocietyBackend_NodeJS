@@ -224,21 +224,23 @@ Overall, the back-end of Society Management is designed to provide a robust and 
 ## API Design
 <a k="api-design"></a>
 
-The Society Management platform's API is designed following the REST architectural style. The API is implemented using Node.js and Express.js. It uses JSON for data exchange and follows standard HTTP request methods such as GET, POST, PUT, and DELETE.
-Sample list of API endpoints and their functionalities is completely listed at http://localhost:3000/docs
-The installation steps are listed below and you can localhost on your system.
+* The Society Management platform's API is designed following the REST architectural style. The API is implemented using Node.js and Express.js. It uses JSON for data exchange and follows standard HTTP request methods such as GET, POST, PUT, and DELETE.
 
-In conclusion, the REST API design for the Society Management tech platform is a crucial part of the project. The API endpoints and their functionalities are designed to ensure seamless communication between the front-end and back-end of the application. By following RESTful principles, the API will be scalable, maintainable, and reliable. The sample API requests and responses provided above illustrate how each endpoint will function and
-what kind of data it will accept or return.
-With this API design, Society Managaement will be able to provide a smooth user experience while ensuring security and stability.
+* Sample list of API endpoints and their functionalities is completely listed at http://localhost:3000/docs
+
+* The installation steps are listed below and you can localhost on your system.
+
+- In conclusion, the REST API design for the Society Management tech platform is a crucial part of the project. The API endpoints and their functionalities are designed to ensure seamless communication between the front-end and back-end of the application.
+- By following RESTful principles, the API will be scalable, maintainable, and reliable. The sample API requests and responses provided above illustrate how each endpoint will function and what kind of data it will accept or return.
+- With this API design, Society Managaement will be able to provide a smooth user experience while ensuring security and stability.
 
 ## Error Handling
 <a k="api-design"></a>
 The API will return appropriate HTTP status codes and error messages for invalid requests or server errors.
 
-400 Bad Request: The request was invalid.
-404 Not Found: The requested record was not found.
-500 Internal Server Error: An error occurred on the server.
+* 400 Bad Request: The request was invalid.
+* 404 Not Found: The requested record was not found.
+* 500 Internal Server Error: An error occurred on the server.
 
 <hr>
 <p align="right">(<a href="#top">back to top</a>)</p>
