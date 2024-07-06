@@ -72,7 +72,8 @@ In summary, Society Management is a versatile and intuitive tech platform that i
   <a href="https://www.w3schools.com/css/"> <img src="https://img.icons8.com/color/70/000000/css3.png" alt="CSS" /></a>
   <a href="https://www.w3schools.com/js/"><img src="https://img.icons8.com/color/70/000000/javascript--v1.png" alt="JS" /></a>
   <a href="https://www.w3schools.com/REACT/DEFAULT.ASP"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png" alt="React.js" width="50" height="50" /></a>
-  </p>
+  <a href="https://www.w3schools.com/REACT/DEFAULT.ASP"><img src="images/SequelizeImg.jpeg" alt="React.js" width="50" height="50" /></a>
+</p>
 
 - **HTML**:HTML (HyperText Markup Language) is a skeleton of a website, structuring content with tags and elements.
 - **CSS**:CSS is a style sheet language used to style web pages.It enables the application of different styles based on media types and user preferences, enhancing user accessibility and readability
@@ -91,6 +92,8 @@ In summary, Society Management is a versatile and intuitive tech platform that i
 - **MySQL**: MySQL is a popular open-source relational database management system (RDBMS) that uses structured query language (SQL) for database access and management.
 - **Express.js**: A minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
 - **Node.js**: A JavaScript runtime built on Chrome's V8 JavaScript engine, enabling server-side scripting and running scripts server-side to produce dynamic web page content.
+- **Sequelize**: Sequelize is a promise-based ORM for Node.js that simplifies database interaction by abstracting SQL queries and supporting various SQL dialects. It allows easy management of database models, associations, migrations, and CRUD operations using JavaScript.
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -176,38 +179,136 @@ library for React.
 <a k="back-end-technology"></a>
 
 Description of the Back-end Architecture: 
-StudyNotion uses a monolithic architecture, with the backend built using Node.js and
-Express.js, and MongoDB as the primary database. 
+Society Management uses a monolithic architecture, with the backend built using Node.js and Express.js, and MySQL as the primary database. 
 
 Features and Functionalities of the Back-end: 
-The back end of StudyNotion provides a range of features and functionalities, including:
-1. User authentication and authorization: Students and instructors can sign up and log in
-to the platform using their email addresses and password. The platform also supports
-OTP (One-Time Password) verification and forgot password functionality for added
-security.
-1. Course management: Instructors can create, read, update, and delete courses, as well 
-as manage course content and media. Students can view and rate courses.
-1. Payment Integration: Students will purchase and enrol on courses by completing the
-checkout flow that is followed by Razorpay integration for payment handling.
-1. Cloud-based media management: StudyNotion uses Cloudinary, a cloud-based media
-management service, to store and manage all media content, including images, videos,
-and documents.
-1. Markdown formatting: Course content in document format is stored in Markdown
-format, which allows for easier display and rendering on the front end.
+The back end of Society Management provides a range of features and functionalities, including:
+1. User authentication and authorization: Students and instructors can sign up and log in to the platform using their college assigned microsoft email addresses and password.
+2. Society management: Society Heads can create, fetch, update, and delete the societies, as well as manage society content and media. Students can view and can easily decide o participate in their desired society.
+
 
 Frameworks, Libraries, and Tools used: 
-The back end of StudyNotion uses a range of frameworks, libraries, and tools to ensure its
-functionality and performance, including:
+The back end of StudyNotion uses a range of frameworks, libraries, and tools to ensure its functionality and performance, including:
 1. Node.js: Node.js is used as the primary framework for the back end.
-2. MongoDB: MongoDB is used as the primary database, providing a flexible and scalable
-data storage solution.
-3. Express.js: Express.js is used as a web application framework, providing a range of
-features and tools for building web applications.
+2. MySQL: MySQL is used as the primary database, providing a flexible and scalable data storage solution.
+3. Express.js: Express.js is used as a web application framework, providing a range of features and tools for building web applications.
 4. JWT: JWT (JSON Web Tokens) are used for authentication and authorization,
 providing a secure and reliable way to manage user credentials.
 5. Bcrypt: Bcrypt is used for password hashing, adding an extra layer of security to user
 data.
-6. Mongoose: Mongoose is used as an Object Data Modeling (ODM) library, providing a
-way to interact with MongoDB using JavaScript
+6. Sequelize: Sequelize is a promise-based Node.js ORM (Object-Relational Mapping) tool that provides an easy way to interact with SQL databases. It supports various SQL dialects such as PostgreSQL, MySQL, SQLite, and MSSQL. Sequelize allows developers to define models for their database tables, perform CRUD operations, and manage database migrations, associations, and transactions using JavaScript. It abstracts the complexity of raw SQL queries, making it easier to work with databases in a more object-oriented manner.
 
 <hr>
+
+
+### Data Models and Database Schema:
+<a k="data-models-and-database-schema"></a>
+The back end of Society Management uses a range of data models and database schemas to manage data, including:
+1. Users schema:
+2. Roles schema:
+3. StudentProfile schema:
+3. SocietyProfile schema:
+3. SocietyEvents schema:
+3. SocietyAchievements schema:
+3. StudentAchievements schema:
+3. StudentMarking schema:
+
+Overall, the back-end of Society Management is designed to provide a robust and scalable solution for a tech platform for a college, with a focus on security, reliability, and ease of use. By using the right frameworks, libraries, and tools, we can ensure that the platform functions smoothly and provides an optimal user experience for all its users.
+
+![Database Schema](images/databaseSchema.png)
+
+
+<hr>
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+## API Design
+<a k="api-design"></a>
+
+The Society Management platform's API is designed following the REST architectural style. The API is implemented using Node.js and Express.js. It uses JSON for data exchange and follows standard HTTP request methods such as GET, POST, PUT, and DELETE.
+Sample list of API endpoints and their functionalities is completely listed at http://localhost:3000/docs
+The installation steps are listed below and you can localhost on your system.
+
+In conclusion, the REST API design for the Society Management tech platform is a crucial part of the project. The API endpoints and their functionalities are designed to ensure seamless communication between the front-end and back-end of the application. By following RESTful principles, the API will be scalable, maintainable, and reliable. The sample API requests and responses provided above illustrate how each endpoint will function and
+what kind of data it will accept or return.
+With this API design, Society Managaement will be able to provide a smooth user experience while ensuring security and stability.
+
+## Error Handling
+<a k="api-design"></a>
+The API will return appropriate HTTP status codes and error messages for invalid requests or server errors.
+
+400 Bad Request: The request was invalid.
+404 Not Found: The requested record was not found.
+500 Internal Server Error: An error occurred on the server.
+
+<hr>
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+## How to Contribute ?
+<a k="how-to-contribute"></a>
+<div>
+  <h3> Installation and Setup Guide </h3>
+</div
+
+<br>
+
+To get started with Society Management on your local machine, follow these steps:
+
+#### Prerequisites
+
+
+Before you begin, ensure you have the following prerequisites installed:
+
+- Node.js (version X.X.X) ⚙️
+- MySQL (version X.X.X) 📦
+- Git 📂
+
+  <p align="right">(<a href="#top">back to top</a>)</p>
+
+#### Installation Steps
+
+1. **Clone the Repository:**
+
+   ```bash
+   git clone https://github.com/yourusername/SocietyBackend_NodeJS.git
+   ```
+
+2. **Navigate to the Project Directory:**
+
+   ```bash
+   cd SocietyBackend_NodeJS
+   ```
+
+3. **Install Dependencies:**
+
+   ```bash
+   npm install
+   npm install express 
+   npm install --save sequelize mysql2
+   npm install express swagger-jsdoc swagger-ui-express
+   ```
+
+4. **Set Environment Variables:**
+
+   ```bash
+   cd server
+   ```
+
+   Create a `.env` file or rename it to `.env` if exists already in server for the following environment variables:
+
+   ```bash
+   DB_USER = root
+   DB_PASS = yourDatabasePassword
+   DB_NAME = yourDatabaseName
+   DB_HOST = 127.0.0.1
+
+   ```
+5. **Starting the server**
+
+   ```bash
+   Use the following command to start the server:
+
+   node server.js
+
+   ```
+   
