@@ -7,6 +7,7 @@ const setupSwaggerDocs = require('./config/swagger');
 const societyEventsRoutes = require('./routes/societyEventsRoutes');
 const studentAchievementRoutes = require('./routes/studentAchievementRoutes');   
 const societyAchievementRoutes = require('./routes/societyAchievementsRoutes');   
+const studentMarkingRoutes = require('./routes/studentMarkingsRoutes');   
 
 const app = express();
 const port = 3000;
@@ -20,6 +21,7 @@ app.use('/api', societyProfileRouteRoutes)
 app.use('/api', societyEventsRoutes)
 app.use('/api', studentAchievementRoutes)
 app.use('/api', societyAchievementRoutes)
+app.use('/api', studentMarkingRoutes)
 
 // Setup Swagger docs
 setupSwaggerDocs(app);
