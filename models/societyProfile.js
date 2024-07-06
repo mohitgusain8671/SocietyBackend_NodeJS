@@ -76,7 +76,27 @@ module.exports = (sequelize, DataTypes) => {
       timestamps: false, // Disable timestamps if you don't want `createdAt` and `updatedAt`
       id: false,    // Disable default primary key
     //   freezeTableName: true to disable the pluralization of the table name
-    })
+    });
+
+
+    SocietyProfile.associate = (models) => {
+      
+      SocietyProfile.hasMany(models.SocietyEvents, {
+        foreignKey: 'SocietyID',
+        as: 'societyevents',
+      });
+
+      SocietyProfile.hasMany(models.SocietyAchievement, {
+        foreignKey: 'SocietyID',
+        as: 'societyachievements',
+      });
+      
+      SocietyProfile.hasMany(models.StudentProfile, {
+        foreignKey: 'SocietyName',
+        as: 'studentprofiles',
+      });
+
+    };
   
     return SocietyProfile
   }

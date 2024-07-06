@@ -61,7 +61,17 @@ module.exports = (sequelize, DataTypes) => {
       tableName: "studentachievements", // Explicit table name
       timestamps: false, // Disable timestamps if you don't want `createdAt` and `updatedAt`
       id: false,    // Disable default primary key
-    })
+    });
+
+
+    StudentAchievement.associate = (models) => {
+      
+      StudentAchievement.belongsTo(models.StudentProfile, {
+        foreignKey: 'EnrollmentNo',
+        as: 'studentprofiles',
+      });
+      
+    };
   
     return StudentAchievement
   }

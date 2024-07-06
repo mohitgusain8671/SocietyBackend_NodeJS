@@ -58,7 +58,22 @@ module.exports = (sequelize, DataTypes) => {
     tableName: "users", // Explicit table name
     timestamps: false, // Disable timestamps if you don't want `createdAt` and `updatedAt`
     id: false,    // Disable default primary key
-  })
+  });
+
+
+  User.associate = (models) => {
+    
+    User.hasOne(models.StudentProfile, {
+      foreignKey: 'UserID',
+      as: 'studentprofiles',
+    });
+
+    User.hasMany(models.Roles, {
+      foreignKey: 'RoleID',
+      as: 'roles',
+    });
+
+  };
 
   return User
 }

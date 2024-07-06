@@ -134,38 +134,23 @@ The front end of Society Management has all the necessary pages that a tech plat
 ### For Students:
 <a k="for-students"></a>
 * Homepage: This page will have a brief introduction to the platform, as well a list of all the societies of the college.
-* Course List: This page will have a list of all the courses available on the platform,
-along with their descriptions and ratings.
-* Wishlist: This page will display all the courses that a student has added to their
-wishlist.
-* Cart Checkout: This page will allow the user to complete the course purchase.
-* Course Content: This page will have the course content for a particular course,
-including videos, and other related material.
-* User Details: This page will have details about the student's account, including
-their name, email, and other relevant information.
-* User Edit Details: This page will allow the student to edit their account details.
 
-
-### For Instructors:
+### For SocietyHeads:
 <a k="for-instructors"></a>
-* Dashboard: This page will have an overview of the instructor's courses, as well as
-the ratings and feedback for each course.
-* Insights: This page will have detailed insights into the instructor's courses,
-including the number of views, clicks, and other relevant metrics.
-* Course Management Pages: These pages will allow the instructor to create, update,
-and delete courses, as well as manage the course content and pricing.
-* View and Edit Profile Details: These pages will allow the instructor to view and edit
-their account details.
+
+* Dashboard: This page will have an overview of the all the societies.
+
+* Society Management Pages: These pages will allow the instructor to create, update and delete society.
+
+* View and Edit Society Details: These pages will allow the SocietyHeads to view and edit their society details.
+
 PAGE 3
-For Admin (this is for future scope):
-* Dashboard: This page will have an overview of the platform's courses, instructors,
-and students.
-* Insights: This page will have detailed insights into the platform's metrics, including
-the number of registered users, courses, and revenue.
-* Instructor Management: This page will allow the admin to manage the platform's
-instructors, including their account details, courses, and ratings.
-* Other Relevant Pages: The admin will also have access to other relevant pages, such
-as user management and course management pages.
+For College Admin (this is for future scope):
+* Dashboard: This page will have an overview of the platform's societies, their complete description and students.
+
+* Society Management Pages: These pages will allow the admin to create, update and delete society.
+
+* Other Relevant Pages: The admin will also have access to other relevant pages, such as user management and student's and society's achievement pages.
 
 To build the front end, we use frameworks and libraries such as ReactJS, We also use CSS and Tailwind, which are
 styling frameworks that help make the user interface look good and responsive.
@@ -192,8 +177,7 @@ The back end of StudyNotion uses a range of frameworks, libraries, and tools to 
 1. Node.js: Node.js is used as the primary framework for the back end.
 2. MySQL: MySQL is used as the primary database, providing a flexible and scalable data storage solution.
 3. Express.js: Express.js is used as a web application framework, providing a range of features and tools for building web applications.
-4. JWT: JWT (JSON Web Tokens) are used for authentication and authorization,
-providing a secure and reliable way to manage user credentials.
+4. JWT: JWT (JSON Web Tokens) are used for authentication and authorization, providing a secure and reliable way to manage user credentials.
 5. Bcrypt: Bcrypt is used for password hashing, adding an extra layer of security to user
 data.
 6. Sequelize: Sequelize is a promise-based Node.js ORM (Object-Relational Mapping) tool that provides an easy way to interact with SQL databases. It supports various SQL dialects such as PostgreSQL, MySQL, SQLite, and MSSQL. Sequelize allows developers to define models for their database tables, perform CRUD operations, and manage database migrations, associations, and transactions using JavaScript. It abstracts the complexity of raw SQL queries, making it easier to work with databases in a more object-oriented manner.

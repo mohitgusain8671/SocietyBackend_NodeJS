@@ -61,7 +61,17 @@ module.exports = (sequelize, DataTypes) => {
       tableName: "societyachievements", // Explicit table name
       timestamps: false, // Disable timestamps if you don't want `createdAt` and `updatedAt`
       id: false,    // Disable default primary key
-    })
+    });
+
+
+    SocietyAchievement.associate = (models) => {
+      
+      SocietyAchievement.belongsTo(models.SocietyProfile, {
+        foreignKey: 'SocietyID',
+        as: 'societyprofiles',
+      });
+
+    };
   
     return SocietyAchievement
   }

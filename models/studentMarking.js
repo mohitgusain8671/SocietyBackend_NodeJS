@@ -37,11 +37,12 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     StudentMarkings.associate = (models) => {
+      
         StudentMarkings.hasMany(models.StudentProfile, {
           foreignKey: 'EnrollmentNo',
           as: 'studentprofiles',
         });
-      };
+    };
   
     return StudentMarkings
   }

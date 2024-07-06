@@ -103,10 +103,27 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     StudentProfile.associate = (models) => {
+
       StudentProfile.belongsTo(models.StudentMarkings, {
         foreignKey: 'EnrollmentNo',
         as: 'studentmarkings',
       });
+      
+      StudentProfile.belongsTo(models.User, {
+        foreignKey: 'UserID',
+        as: 'users',
+      });
+
+      StudentProfile.hasMany(models.StudentAchievement, {
+        foreignKey: 'EnrollmentNo',
+        as: 'studentachievements',
+      });
+
+      StudentProfile.belongsTo(models.SocietyProfile, {
+        foreignKey: 'SocietyName',
+        as: 'societyprofiles',
+      });
+    
     };
   
     return StudentProfile

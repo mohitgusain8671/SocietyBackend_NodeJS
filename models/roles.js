@@ -34,7 +34,15 @@ module.exports = (sequelize, DataTypes) => {
     {
       tableName: "roles", // Explicit table name
       timestamps: false, // Disable timestamps if you don't want `createdAt` and `updatedAt`
-    })
+    });
+
+    Roles.associate = (models) => {
+      
+      Roles.belongsTo(models.User, {
+        foreignKey: 'RoleID',
+        as: 'users',
+      });
+  };
   
     return Roles
   }
