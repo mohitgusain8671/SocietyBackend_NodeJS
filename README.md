@@ -26,18 +26,18 @@ go run main.go
 
 - [Project Description](#project-description)
 - [Technology Used](#tech-stack)
-- [Frontend](#frontend)
-- [Backend](#backend)
+   - [Frontend](#frontend)
+   - [Backend](#backend)
 - [System Architecture](#system-architecture)
-- [Front-end](#front-end)
-- [Back-end](#back-end)
-- [Database](#database)
-- [Architecture Diagram](#architecture-diagram)
+   - [Front-end](#front-end)
+   - [Back-end](#back-end)
+   - [Database](#database)
+   - [Architecture Diagram](#architecture-diagram)
 - [Front End Technology](#front-end-technology)
-- [For Students](#for-students)
-- [For Instructors](#for-instructors)
+   - [For Students](#for-students)
+   - [For Instructors](#for-instructors)
 - [Back End Technology](#back-end-technology)
-- [Data Models and Database Schema](#data-models-and-database-schema)
+   - [Data Models and Database Schema](#data-models-and-database-schema)
 - [API Design](#api-design)
 - [How to Contribute](#how-to-contribute)
 
@@ -84,7 +84,7 @@ In summary, Society Management is a versatile and intuitive tech platform that i
 <a m="backend"></a>
 <p>
 <a href="https://www.w3schools.com/nodejs/"><img src="https://e7.pngegg.com/pngimages/247/558/png-clipart-node-js-javascript-express-js-npm-react-github-angle-text.png" alt="Node.js" width="50" height="50" /></a>
-<a href="https://www.javatpoint.com/expressjs-tutorial"><img src="https://cdn.icon-icons.com/icons2/2699/PNG/512/expressjs_logo_icon_169185.png" alt="expressjs" width="50" height="50" /></a>
+<a href="https://www.javatpoint.com/expressjs-tutorial"><img src="https://github.com/expressjs/expressjs.com/raw/gh-pages/images/express-facebook-share.png" alt="expressjs" width="50" height="50" /></a>
 <a href="https://www.mongodb.com/docs/"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/d/dd/MySQL_logo.svg/1280px-MySQL_logo.svg.png" alt="MySQL Logo" width="50" height="50" /></a>
 </p>
 
@@ -118,3 +118,96 @@ The database for the platform is built using MySQL, which is a SQL database that
 Here is a high-level diagram that illustrates the architecture of the Society management platform:
 
 ![Architecture](images/architecture.png)
+
+
+<hr>
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+## Front End Technology
+<a k="front-end-technology"></a>
+
+The front end of Society Management has all the necessary pages that a tech platform for all the societies within the college should have. Some of these pages are:
+
+### For Students:
+<a k="for-students"></a>
+* Homepage: This page will have a brief introduction to the platform, as well a list of all the societies of the college.
+* Course List: This page will have a list of all the courses available on the platform,
+along with their descriptions and ratings.
+* Wishlist: This page will display all the courses that a student has added to their
+wishlist.
+* Cart Checkout: This page will allow the user to complete the course purchase.
+* Course Content: This page will have the course content for a particular course,
+including videos, and other related material.
+* User Details: This page will have details about the student's account, including
+their name, email, and other relevant information.
+* User Edit Details: This page will allow the student to edit their account details.
+
+
+### For Instructors:
+<a k="for-instructors"></a>
+* Dashboard: This page will have an overview of the instructor's courses, as well as
+the ratings and feedback for each course.
+* Insights: This page will have detailed insights into the instructor's courses,
+including the number of views, clicks, and other relevant metrics.
+* Course Management Pages: These pages will allow the instructor to create, update,
+and delete courses, as well as manage the course content and pricing.
+* View and Edit Profile Details: These pages will allow the instructor to view and edit
+their account details.
+PAGE 3
+For Admin (this is for future scope):
+* Dashboard: This page will have an overview of the platform's courses, instructors,
+and students.
+* Insights: This page will have detailed insights into the platform's metrics, including
+the number of registered users, courses, and revenue.
+* Instructor Management: This page will allow the admin to manage the platform's
+instructors, including their account details, courses, and ratings.
+* Other Relevant Pages: The admin will also have access to other relevant pages, such
+as user management and course management pages.
+
+To build the front end, we use frameworks and libraries such as ReactJS, We also use CSS and Tailwind, which are
+styling frameworks that help make the user interface look good and responsive.
+To manage the state of the application, we use Redux, which is a popular state management
+library for React. 
+
+<hr>
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+## Back End Technology
+<a k="back-end-technology"></a>
+
+Description of the Back-end Architecture: 
+StudyNotion uses a monolithic architecture, with the backend built using Node.js and
+Express.js, and MongoDB as the primary database. 
+
+Features and Functionalities of the Back-end: 
+The back end of StudyNotion provides a range of features and functionalities, including:
+1. User authentication and authorization: Students and instructors can sign up and log in
+to the platform using their email addresses and password. The platform also supports
+OTP (One-Time Password) verification and forgot password functionality for added
+security.
+1. Course management: Instructors can create, read, update, and delete courses, as well 
+as manage course content and media. Students can view and rate courses.
+1. Payment Integration: Students will purchase and enrol on courses by completing the
+checkout flow that is followed by Razorpay integration for payment handling.
+1. Cloud-based media management: StudyNotion uses Cloudinary, a cloud-based media
+management service, to store and manage all media content, including images, videos,
+and documents.
+1. Markdown formatting: Course content in document format is stored in Markdown
+format, which allows for easier display and rendering on the front end.
+
+Frameworks, Libraries, and Tools used: 
+The back end of StudyNotion uses a range of frameworks, libraries, and tools to ensure its
+functionality and performance, including:
+1. Node.js: Node.js is used as the primary framework for the back end.
+2. MongoDB: MongoDB is used as the primary database, providing a flexible and scalable
+data storage solution.
+3. Express.js: Express.js is used as a web application framework, providing a range of
+features and tools for building web applications.
+4. JWT: JWT (JSON Web Tokens) are used for authentication and authorization,
+providing a secure and reliable way to manage user credentials.
+5. Bcrypt: Bcrypt is used for password hashing, adding an extra layer of security to user
+data.
+6. Mongoose: Mongoose is used as an Object Data Modeling (ODM) library, providing a
+way to interact with MongoDB using JavaScript
+
+<hr>
