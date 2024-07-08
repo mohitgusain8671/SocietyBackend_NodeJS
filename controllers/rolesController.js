@@ -6,7 +6,10 @@ const roles = db.Roles;
 //ADD NEW STUDENT
 let AddNewRole = async (
     RoleID,
-    Rolename
+    Rolename,
+    LastDateToApply,
+    Responsibilities,
+    LinkBySociety,
 ) => {
   try {
     let data = await roles.create({
@@ -27,6 +30,9 @@ let AddNewRole = async (
 let UpdateRole = async (
     RoleID,
     Rolename,
+    LastDateToApply,
+    Responsibilities,
+    LinkBySociety,
 ) => {
   try {
     let data = await roles.update(
