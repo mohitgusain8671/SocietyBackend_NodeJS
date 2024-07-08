@@ -9,12 +9,15 @@ const studentAchievementRoutes = require('./routes/studentAchievementRoutes');
 const societyAchievementRoutes = require('./routes/societyAchievementsRoutes');   
 const studentMarkingRoutes = require('./routes/studentMarkingsRoutes');   
 const testimonialRoutes = require('./routes/testimonialsRoutes');   
-
+const cors = require("cors");
 const app = express();
 const port = 3000;
 
 app.use(express.json());
-
+app.use(cors({
+  origin: '*',
+  credentials: true,
+}));
 app.use('/api', userRoutes);
 app.use('/api', studentProfileRoutes)
 app.use('/api', rolesRoutes)
