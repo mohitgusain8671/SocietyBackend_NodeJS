@@ -4,6 +4,7 @@ const {
   UpdateStudent,
   FetchStudent,
   RemoveStudent,
+  FetchContributions,
 } = require('../controllers/studentProfileController');
 
 const express = require('express');
@@ -69,6 +70,7 @@ studentProfileRoute.get("/FetchAllStudents", (req, res) => {
  *              - ProfilePicture
  *              - SocietyName
  *              - SocietyPosition
+ *              - StudentContributions
  *             properties:
  *               EnrollmentNo:
  *                 type: integer  
@@ -91,6 +93,8 @@ studentProfileRoute.get("/FetchAllStudents", (req, res) => {
  *                 type: string
  *               SocietyPosition:
  *                 type: string
+ *               StudentContributions:
+ *                 type: string
  *     responses:
  *       200:
  *         description: Student created successfully
@@ -109,6 +113,7 @@ studentProfileRoute.post("/AddNewStudent", (req, res) => {
     ProfilePicture,
     SocietyName,
     SocietyPosition,
+    StudentContributions,
   } = req.body;
   AddNewStudent(
     EnrollmentNo,
@@ -121,6 +126,7 @@ studentProfileRoute.post("/AddNewStudent", (req, res) => {
     ProfilePicture,
     SocietyName,
     SocietyPosition,
+    StudentContributions,
   )
     .then((item) => {
       res.status(200).json(item);
@@ -173,6 +179,8 @@ studentProfileRoute.post("/AddNewStudent", (req, res) => {
  *                 type: string
  *               SocietyPosition:
  *                 type: string
+ *               StudentContributions:
+ *                 type: string
  *     responses:
  *       200:
  *         description: Student updated successfully
@@ -193,6 +201,7 @@ studentProfileRoute.put("/UpdateStudent", (req, res) => {
     ProfilePicture,
     SocietyName,
     SocietyPosition,
+    StudentContributions,
   } = req.body;
   UpdateStudent(
     EnrollmentNo,
@@ -205,6 +214,7 @@ studentProfileRoute.put("/UpdateStudent", (req, res) => {
     ProfilePicture,
     SocietyName,
     SocietyPosition,
+    StudentContributions,
   )
     .then((item) => {
       res.status(200).json(item);
@@ -252,6 +262,44 @@ studentProfileRoute.get("/FetchStudent/:EnrollmentNo", (req, res) => {
     });
 });
 
+
+
+//ROUTE TO GET STUDENT CONTRIBUTIONS BY ENROLLMENT NO.
+/**
+ * @swagger
+ * /FetchContributions/{EnrollmentNo}:
+ *   get:
+ *     summary: Get a Student contributions by their EnrollmentNo
+ *     tags: [StudentProfile]
+ *     parameters:
+ *       - in: path
+ *         name: EnrollmentNo
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: EnrollmentNo
+ *     responses:
+ *       200:
+ *         description: Student contribution details
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/StudentProfile'
+ *       404:
+ *         description: Student contribution not found
+ */
+studentProfileRoute.get("/FetchContributions/:EnrollmentNo", (req, res) => {
+  console.log("Running");
+  const EnrollmentNo = req.params.EnrollmentNo;
+  FetchContributions(EnrollmentNo)
+    .then((item) => {
+      res.status(200).json(item);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(400).json(err);
+    });
+});
 
 //ROUTE TO DELETE STUDENT
   /**

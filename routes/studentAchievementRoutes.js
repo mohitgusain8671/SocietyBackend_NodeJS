@@ -3,6 +3,7 @@ const {
     UpdateAchievement,
     RemoveAchievement,
     FetchAllAchievement,
+    FetchAchievements,
   } = require('../controllers/studentAchievementController');
   
   const express = require('express');
@@ -42,6 +43,45 @@ const {
         res.status(400).json(err);
       });
   });
+
+
+
+//ROUTE TO GET STUDENT ACHIEVEMENT BY ENROLLMENT NO.
+/**
+ * @swagger
+ * /FetchAchievements/{EnrollmentNo}:
+ *   get:
+ *     summary: Get a Student achievement by their EnrollmentNo
+ *     tags: [StudentAchievements]
+ *     parameters:
+ *       - in: path
+ *         name: EnrollmentNo
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: Enrollment No
+ *     responses:
+ *       200:
+ *         description: Student achievement details
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/StudentAchievements'
+ *       404:
+ *         description: Student achievement not found
+ */
+StudentAchievementRoute.get("/FetchAchievements/:EnrollmentNo", (req, res) => {
+  console.log("Running");
+  const EnrollmentNo = req.params.EnrollmentNo;
+  FetchAchievements(EnrollmentNo)
+    .then((item) => {
+      res.status(200).json(item);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(400).json(err);
+    });
+});
   
   
   //ROUTE TO ADD ACHIEVEMENTS

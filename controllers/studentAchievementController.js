@@ -73,6 +73,27 @@ let FetchAllAchievement = async () => {
 
 
 
+//GET STUDENT ACHIEVEMENTS
+let FetchAchievements = async (EnrollmentNo) => {
+  if (!EnrollmentNo) {
+    throw new Error("EnrollmentNo is required");
+  }
+  try {
+    let achievement = await studentAchievements.findOne({
+      where: {
+        EnrollmentNo,
+      },
+      attributes: ['Description'],
+    });
+    console.log(achievement);
+    return achievement;
+  } catch (e) {
+    return e;
+  }
+};
+
+
+
 //delete an achievement of a student
 let RemoveAchievement = async (EnrollmentNo) => {
   try {
@@ -110,4 +131,5 @@ module.exports = {
   UpdateAchievement,
   RemoveAchievement,
   FetchAllAchievement,
+  FetchAchievements,
 };

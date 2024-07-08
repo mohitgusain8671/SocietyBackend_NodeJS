@@ -15,6 +15,7 @@
  *         - ProfilePicture
  *         - SocietyName
  *         - SocietyPosition
+ *         - StudentContributions
  *       properties:
  *         EnrollmentNo:
  *           type: integer  
@@ -39,14 +40,16 @@
  *           description: The mobile no. of the student
  *         ProfilePicture:
  *           type: string
- *           format: binary
- *           description: A binary file representing the student's profile image
+ *           description: student's profile image
  *         SocietyName:
  *           type: string
  *           description: The name of the society in which the student is enrolled
  *         SocietyPosition:
  *           type: string
  *           description: The student's position in the assigned society
+ *         StudentContributions:
+ *           type: string
+ *           description: The Contributions made by the society members
  */
 
 
@@ -84,7 +87,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       ProfilePicture: {
-        type: DataTypes.BLOB('long'),
+        type: DataTypes.STRING,
         allowNull: true,
       },
       SocietyName: {
@@ -95,6 +98,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      StudentContributions: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      }
     },
     {
       tableName: "studentprofiles", // Explicit table name

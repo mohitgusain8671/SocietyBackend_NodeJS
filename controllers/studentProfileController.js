@@ -14,7 +14,8 @@ let AddNewStudent = async (
     MobileNo,
     ProfilePicture,
     SocietyName,
-    SocietyPosition
+    SocietyPosition,
+    StudentContributions
 ) => {
   try {
     let data = await studentProfile.create({
@@ -27,7 +28,8 @@ let AddNewStudent = async (
         MobileNo,
         ProfilePicture,
         SocietyName,
-        SocietyPosition
+        SocietyPosition,
+        StudentContributions
     });
     return data;
   } catch (e) {
@@ -47,7 +49,8 @@ let UpdateStudent = async (
     MobileNo,
     ProfilePicture,
     SocietyName,
-    SocietyPosition
+    SocietyPosition,
+    StudentContributions
 ) => {
   try {
     let data = await studentProfile.update(
@@ -61,7 +64,8 @@ let UpdateStudent = async (
         MobileNo,
         ProfilePicture,
         SocietyName,
-        SocietyPosition
+        SocietyPosition,
+        StudentContributions
       },
       {
         where: {
@@ -110,6 +114,27 @@ let FetchStudent = async (EnrollmentNo) => {
 };
 
 
+
+//GET STUDENT CONTRIBUTIONS
+let FetchContributions = async (EnrollmentNo) => {
+  if (!EnrollmentNo) {
+    throw new Error("EnrollmentNo is required");
+  }
+  try {
+    let contri = await studentProfile.findOne({
+      where: {
+        EnrollmentNo,
+      },
+      attributes: ['StudentContributions'],
+    });
+    console.log(contri);
+    return contri;
+  } catch (e) {
+    return e;
+  }
+};
+
+
 //delete STUDENT
 let RemoveStudent = async (EnrollmentNo) => {
   try {
@@ -149,4 +174,5 @@ module.exports = {
   RemoveStudent,
   FetchAllStudents,
   FetchStudent,
+  FetchContributions,
 };
