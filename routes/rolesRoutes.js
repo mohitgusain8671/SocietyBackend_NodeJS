@@ -61,10 +61,19 @@ role.get("/FetchAllRoles", (req, res) => {
  *             required:
  *               - RoleID
  *               - Rolename
+ *               - LastDateToApply
+ *               - Responsibilities
+ *               - LinkBySociety
  *             properties:
  *               RoleID:
  *                 type: integer
  *               Rolename:
+ *                 type: string
+ *               LastDateToApply:
+ *                 type: string
+ *               Responsibilities:
+ *                 type: string
+ *               LinkBySociety:
  *                 type: string
  *     responses:
  *       201:
@@ -75,11 +84,17 @@ role.get("/FetchAllRoles", (req, res) => {
   role.post("/AddNewRole", (req, res) => {
     const {
         RoleID,
-        Rolename
+        Rolename,
+        LastDateToApply,
+        Responsibilities,
+        LinkBySociety,
     } = req.body;
     AddNewRole(
         RoleID,
-        Rolename
+        Rolename,
+        LastDateToApply,
+        Responsibilities,
+        LinkBySociety,
     )
       .then((item) => {
         res.status(200).json(item);
@@ -116,6 +131,12 @@ role.get("/FetchAllRoles", (req, res) => {
  *                 type: integer
  *               Rolename:
  *                 type: string
+ *               LastDateToApply:
+ *                 type: string
+ *               Responsibilities:
+ *                 type: string
+ *               LinkBySociety:
+ *                 type: string
  *     responses:
  *       200:
  *         description: Role updated successfully
@@ -127,11 +148,17 @@ role.get("/FetchAllRoles", (req, res) => {
   role.put("/UpdateRole", (req, res) => {
     const {
         RoleID,
-        Rolename
+        Rolename,
+        LastDateToApply,
+        Responsibilities,
+        LinkBySociety,
     } = req.body;
     UpdateRole(
         RoleID,
-        Rolename
+        Rolename,
+        LastDateToApply,
+        Responsibilities,
+        LinkBySociety,
     )
       .then((item) => {
         res.status(200).json(item);

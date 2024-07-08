@@ -47,6 +47,7 @@ async function syncModels() {
       db.require('./societyAchievements')(sequelize, DataTypes),
       db.require('./societyProfile')(sequelize, DataTypes),
       db.require('./studentMarking')(sequelize, DataTypes),
+      db.require('./testimonials')(sequelize, DataTypes),
 
     // Sync all defined models to the DB
     await db.sequelize.sync({force: false}); // use { alter: true } to update tables without dropping

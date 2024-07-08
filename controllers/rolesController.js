@@ -12,6 +12,9 @@ let AddNewRole = async (
     let data = await roles.create({
         RoleID,
         Rolename,
+        LastDateToApply,
+        Responsibilities,
+        LinkBySociety,
     });
     return data;
   } catch (e) {
@@ -30,6 +33,9 @@ let UpdateRole = async (
       {
         RoleID,
         Rolename,
+        LastDateToApply,
+        Responsibilities,
+        LinkBySociety,
       },
       {
         where: {

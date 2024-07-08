@@ -7,6 +7,9 @@
  *       required:
  *         - RoleID
  *         - Rolename
+ *         - LastDateToApply
+ *         - Responsibilities
+ *         - LinkBySociety
  *       properties:
  *         RoleID:
  *           type: integer  
@@ -14,6 +17,15 @@
  *         Rolename:
  *           type: string
  *           description: The name of the role assigned to the student
+ *         LastDateToApply:
+ *           type: string
+ *           description: The last date to apply for the role
+ *         Responsibilities:
+ *           type: string
+ *           description: The responsibilities of the assigned role
+ *         LinkBySociety:
+ *           type: string
+ *           description: The link provided by the society to apply for the role
  */
 
 
@@ -30,6 +42,18 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      LastDateToApply: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      Responsibilities: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      LinkBySociety: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      }
     },
     {
       tableName: "roles", // Explicit table name
@@ -46,3 +70,5 @@ module.exports = (sequelize, DataTypes) => {
   
     return Roles
   }
+
+  //lastdate responsibilities link

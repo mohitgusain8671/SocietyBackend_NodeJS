@@ -34,6 +34,7 @@ db.StudentAchievements = require('./studentAchievements')(sequelize, Sequelize)
 db.SocietyAchievements = require('./societyAchievements')(sequelize, Sequelize)
 db.SocietyProfile = require('./societyProfile')(sequelize, Sequelize)
 db.StudentMarking = require('./studentMarking')(sequelize,Sequelize)
+db.Testimonials = require('./testimonials')(sequelize, Sequelize)
 
 db.sequelize
   .sync({alter: true},{force: false})

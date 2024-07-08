@@ -8,6 +8,7 @@ const societyEventsRoutes = require('./routes/societyEventsRoutes');
 const studentAchievementRoutes = require('./routes/studentAchievementRoutes');   
 const societyAchievementRoutes = require('./routes/societyAchievementsRoutes');   
 const studentMarkingRoutes = require('./routes/studentMarkingsRoutes');   
+const testimonialRoutes = require('./routes/testimonialsRoutes');   
 
 const app = express();
 const port = 3000;
@@ -22,6 +23,7 @@ app.use('/api', societyEventsRoutes)
 app.use('/api', studentAchievementRoutes)
 app.use('/api', societyAchievementRoutes)
 app.use('/api', studentMarkingRoutes)
+app.use('/api', testimonialRoutes)
 
 // Setup Swagger docs
 setupSwaggerDocs(app);
