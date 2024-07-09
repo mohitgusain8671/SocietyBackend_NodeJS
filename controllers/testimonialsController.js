@@ -3,7 +3,7 @@ let db = require("../models");
 
 const testimonials = db.Testimonials;
 
-//ADD NEW STUDENT
+//ADD NEW TESTIMONIAL
 let AddNewTestimonial = async (
     EnrollmentNo,
     TestimonialDescription,
@@ -20,7 +20,7 @@ let AddNewTestimonial = async (
 };
 
 
-//UPDATE STUDENT
+//UPDATE TESTIMONIAL
 let UpdateTestimonial = async (
     EnrollmentNo,
     TestimonialDescription,
@@ -44,14 +44,13 @@ let UpdateTestimonial = async (
 };
 
 
-//GET ALL THE STUDENTS
+//GET ALL THE TESTIMONIAL
 let FetchAllTestimonials = async () => {
   try {
     let data = await testimonials.findAll({
       order: [
         ["EnrollmentNo", "ASC"], 
       ],
-      attributes: ['FirstName','LastName','Branch','ProfilePicture']
     });
 
     return data;
@@ -60,15 +59,17 @@ let FetchAllTestimonials = async () => {
   }
 };
 
-//GET STUDENT BY ID
+//GET TESTIMONIAL BY ID
 let FetchTestimonialID = async (EnrollmentNo) => {
   if (!EnrollmentNo) {
     throw new Error("EnrollmentNo is required");
   }
   try {
     let student = await testimonials.findOne({
-      where: { EnrollmentNo},
-      attributes: ['FirstName','LastName','Branch','ProfilePicture']
+      where: { 
+        EnrollmentNo,
+      },
+      attributes: ['TestimonialDescription'],
     });
     console.log(student);
     return student;
@@ -78,7 +79,7 @@ let FetchTestimonialID = async (EnrollmentNo) => {
 };
 
 
-//delete STUDENT
+//delete TESTIMONIAL
 let RemoveTestimonial = async (EnrollmentNo) => {
   try {
 

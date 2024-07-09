@@ -5,6 +5,7 @@ const {
     RemoveSocietyName,
     FetchAllSociety,
     FetchSocietyCoordinator,
+    FetchSocietyID,
   } = require('../controllers/societyProfileController');
   
   const express = require('express');
@@ -193,7 +194,7 @@ const {
   //ROUTE TO GET SOCIETY BY SOCIETY ID.
   /**
  * @swagger
- * /FetchSociety/{SocietyID}:
+ * /FetchSocietyID/{SocietyID}:
  *   get:
  *     summary: Get a Society by their SocietyID
  *     tags: [SocietyProfile]
@@ -214,10 +215,10 @@ const {
  *       404:
  *         description: Society not found
  */
-  societyProfileRoute.get("/FetchSociety/:SocietyID", (req, res) => {
+  societyProfileRoute.get("/FetchSocietyID/:SocietyID", (req, res) => {
     console.log("Running");
     const SocietyID = req.params.SocietyID;
-    FetchSociety(SocietyID)
+    FetchSocietyID(SocietyID)
       .then((item) => {
         res.status(200).json(item);
       })

@@ -27,17 +27,10 @@ let AddNewRole = async (
 
 
 //UPDATE STUDENT
-let UpdateRole = async (
-    RoleID,
-    Rolename,
-    LastDateToApply,
-    Responsibilities,
-    LinkBySociety,
-) => {
+const UpdateRole = async (RoleID, Rolename, LastDateToApply, Responsibilities, LinkBySociety) => {
   try {
     let data = await roles.update(
       {
-        RoleID,
         Rolename,
         LastDateToApply,
         Responsibilities,
@@ -45,13 +38,15 @@ let UpdateRole = async (
       },
       {
         where: {
-            RoleID: RoleID,
+          RoleID: RoleID,
         },
       }
     );
-    return data;
+
+    return { message: 'Role updated successfully', data: data };
   } catch (e) {
-    return e;
+    console.error('Error updating role:', e);
+    return { error: e.message };
   }
 };
 

@@ -98,6 +98,25 @@ let FetchSocietyCoordinator = async (SocietyCoordinator) => {
 };
 
 
+//GET SOCIETY BY Society Coordinator
+let FetchSocietyID = async (SocietyID) => {
+  if (!SocietyID) {
+    throw new Error("SocietyID is required");
+  }
+  try {
+    let society = await societyProfile.findOne({
+      where: {
+        SocietyID,
+      },
+    });
+    console.log(society);
+    return society;
+  } catch (e) {
+    return e;
+  }
+};
+
+
 //delete SOCIETY through its society id
 let RemoveSocietyID = async (SocietyID) => {
   try {
@@ -173,4 +192,5 @@ module.exports = {
   RemoveSocietyName,
   FetchAllSociety,
   FetchSocietyCoordinator,
+  FetchSocietyID
 };
