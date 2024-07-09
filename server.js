@@ -12,7 +12,7 @@ const testimonialRoutes = require('./routes/testimonialsRoutes');
 const cors = require("cors");
 const app = express();
 const cookieParser = require('cookie-parser');
-const auth = require("./auth");
+require('dotenv').config();
 
 const PORT = process.env.PORT || 8000;
 
