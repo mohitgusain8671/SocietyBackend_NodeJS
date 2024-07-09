@@ -5,9 +5,9 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerDefinition = {
   openapi: '3.0.0',
   info: {
-    title: 'My Node Sequelize Project API',
+    title: 'Society Management Project APIs',
     version: '1.0.0',
-    description: 'API documentation for the Node Sequelize Project',
+    description: 'API documentation for the Society Management Project',
   },
   servers: [
     {

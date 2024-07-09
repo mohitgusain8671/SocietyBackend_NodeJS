@@ -11,13 +11,19 @@ const studentMarkingRoutes = require('./routes/studentMarkingsRoutes');
 const testimonialRoutes = require('./routes/testimonialsRoutes');   
 const cors = require("cors");
 const app = express();
-const port = 3000;
+const cookieParser = require('cookie-parser');
+const auth = require("./auth");
+
+const PORT = process.env.PORT || 8000;
 
 app.use(express.json());
+app.use(cookieParser());
+
 app.use(cors({
   origin: '*',
   credentials: true,
 }));
+
 app.use('/api', userRoutes);
 app.use('/api', studentProfileRoutes)
 app.use('/api', rolesRoutes)
@@ -31,7 +37,7 @@ app.use('/api', testimonialRoutes)
 // Setup Swagger docs
 setupSwaggerDocs(app);
 
-app.listen(port, () => {
-  console.log(`App running at http://localhost:${port}`);
-  console.log(`Swagger docs available at http://localhost:${port}/docs`);
+app.listen(PORT, () => {
+  console.log(`App running at http://localhost:${PORT}`);
+  console.log(`Swagger docs available at http://localhost:${PORT}/docs`);
 });
