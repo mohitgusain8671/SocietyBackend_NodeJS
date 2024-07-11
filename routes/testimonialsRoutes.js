@@ -8,6 +8,8 @@ const {
   
   const express = require('express');
   const testimonialsRoute = express.Router();
+  // const bodyParser = require('body-parser');
+  // app.use(bodyParser.json());
   
   /**
    * @swagger
@@ -123,14 +125,13 @@ const {
    *       400:
    *         description: Bad request
    */
-  testimonialsRoute.put("/UpdateTestimonial", (req, res) => {
-    const {
-        EnrollmentNo,
-        TestimonialDescription,
-    } = req.body;
+  testimonialsRoute.put("/UpdateTestimonial/:EnrollmentNo", (req, res) => {
+    const EnrollmentNo = req.params.EnrollmentNo;
+    const {TestimonialDescription} = req.body;
+
     UpdateTestimonial(
         EnrollmentNo,
-        TestimonialDescription,
+        TestimonialDescription
     )
       .then((item) => {
         res.status(200).json(item);

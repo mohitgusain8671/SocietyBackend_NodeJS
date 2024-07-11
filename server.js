@@ -14,6 +14,9 @@ const app = express();
 const cookieParser = require('cookie-parser');
 require('dotenv').config();
 
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
+
 const PORT = process.env.PORT || 8000;
 
 app.use(express.json());

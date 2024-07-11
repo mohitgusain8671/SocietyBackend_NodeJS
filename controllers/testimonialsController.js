@@ -21,23 +21,28 @@ let AddNewTestimonial = async (
 
 
 //UPDATE TESTIMONIAL
-let UpdateTestimonial = async (
-    EnrollmentNo,
-    TestimonialDescription,
-) => {
+let UpdateTestimonial = async (EnrollmentNo,TestimonialDescription) => {
   try {
-    let data = await testimonials.update(
+    let [data] = await testimonials.update(
       { 
-        EnrollmentNo,
         TestimonialDescription,
       },
       {
         where: {
-          EnrollmentNo: EnrollmentNo,
-        },
+          EnrollmentNo,
+        }
       }
     );
-    return data;
+
+    // Check if any rows were updated
+    if (data) {
+      // Fetch and return the updated testimonial
+      const updatedTestimonial = await testimonials.findOne({ where: { EnrollmentNo } });
+      return updatedTestimonial;
+    }
+
+    // If no rows were updated, throw an error
+    throw new Error('Testimonial not found');
   } catch (e) {
     return e;
   }
@@ -51,6 +56,12 @@ let FetchAllTestimonials = async () => {
       order: [
         ["EnrollmentNo", "ASC"], 
       ],
+      attributes: ['TestimonialDescription'],
+      include: [{
+        model: StudentProfile,
+        as: 'studentprofiles',
+        attributes: ['FirstName','LastName','Branch','BatchYear'],
+      }]
     });
 
     return data;
@@ -70,6 +81,11 @@ let FetchTestimonialID = async (EnrollmentNo) => {
         EnrollmentNo,
       },
       attributes: ['TestimonialDescription'],
+      include: [{
+        model: StudentProfile,
+        as: 'studentprofiles',
+        attributes: ['FirstName','LastName','Branch','BatchYear'],
+      }]
     });
     console.log(student);
     return student;

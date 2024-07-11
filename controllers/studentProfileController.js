@@ -87,6 +87,10 @@ let FetchAllStudents = async () => {
       order: [
         ["UserID", "ASC"], 
       ],
+      include: [{
+        model: StudentAchievement,
+        as: 'studentachievements'
+      }]
     });
 
     return data;
