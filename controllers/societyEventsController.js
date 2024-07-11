@@ -44,10 +44,9 @@ let UpdateEvent = async (
     EventDateTime
 ) => {
   try {
-    let data = await SocietyEvents.update(
+    let [data] = await SocietyEvents.update(
       {
         SocietyID,
-        EventID,
         Title,
         Description,
         EventType,
@@ -57,11 +56,20 @@ let UpdateEvent = async (
       },
       {
         where: {
-            SocietyID: SocietyID,
+          EventID
         },
       }
     );
-    return data;
+
+    // Check if any rows were updated
+    if (data) {
+      // Fetch and return the updated 
+      const updated = await SocietyEvents.findOne({ where: { EventID } });
+      return updated;
+    }
+
+    // If no rows were updated, throw an error
+    throw new Error('Event not found');
   } catch (e) {
     return e;
   }

@@ -145,9 +145,9 @@ role.get("/FetchAllRoles", (req, res) => {
  *       400:
  *         description: Bad request
  */
-  role.put('/UpdateRole', (req, res) => {
+  role.put('/UpdateRole/:RoleID', (req, res) => {
+    const RoleID = req.params.RoleID;
     const {
-      RoleID,
       Rolename,
       LastDateToApply,
       Responsibilities,
@@ -160,16 +160,12 @@ role.get("/FetchAllRoles", (req, res) => {
       Responsibilities,
       LinkBySociety
     )
-      .then((item) => {
-        if (item.error) {
-          res.status(400).json(item);
-        } else {
-          res.status(200).json(item);
-        }
-      })
-      .catch((err) => {
-        res.status(500).json({ error: 'Internal Server Error', details: err.message });
-      });
+    .then((item) => {
+      res.status(200).json(item);
+    })
+    .catch((err) => {
+      res.status(400).json(err);
+    });
   });
   
 

@@ -185,9 +185,9 @@ StudentAchievementRoute.get("/FetchAchievements/:EnrollmentNo", (req, res) => {
  *       400:
  *         description: Bad request
  */
-  StudentAchievementRoute.put("/UpdateAchievement", (req, res) => {
+  StudentAchievementRoute.put("/UpdateAchievement/:EnrollmentNo", (req, res) => {
+    const EnrollmentNo = req.params.EnrollmentNo;
     const {
-        EnrollmentNo,
         AchievementID,
         Title,
         Description,

@@ -29,7 +29,7 @@ let AddNewRole = async (
 //UPDATE STUDENT
 const UpdateRole = async (RoleID, Rolename, LastDateToApply, Responsibilities, LinkBySociety) => {
   try {
-    let data = await roles.update(
+    let [data] = await roles.update(
       {
         Rolename,
         LastDateToApply,
@@ -38,15 +38,23 @@ const UpdateRole = async (RoleID, Rolename, LastDateToApply, Responsibilities, L
       },
       {
         where: {
-          RoleID: RoleID,
+          RoleID,
         },
       }
     );
+    
+    // Check if any rows were updated
+    if (data) {
+      // Fetch and return the updated testimonial
+      const updated = await roles.findOne({ where: { RoleID } });
+      return updated;
+    }
 
-    return { message: 'Role updated successfully', data: data };
+    // If no rows were updated, throw an error
+    throw new Error('Role not found');
+
   } catch (e) {
-    console.error('Error updating role:', e);
-    return { error: e.message };
+    return e;
   }
 };
 

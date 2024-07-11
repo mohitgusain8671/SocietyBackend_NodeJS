@@ -189,9 +189,9 @@ studentProfileRoute.post("/AddNewStudent", (req, res) => {
  *       400:
  *         description: Bad request
  */
-studentProfileRoute.put("/UpdateStudent", (req, res) => {
+studentProfileRoute.put("/UpdateStudent/:EnrollmentNo", (req, res) => {
+  const EnrollmentNo = req.params.EnrollmentNo;
   const {
-    EnrollmentNo,
     UserID,
     FirstName,
     LastName,

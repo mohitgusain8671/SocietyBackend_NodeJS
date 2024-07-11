@@ -53,9 +53,8 @@ let UpdateStudent = async (
     StudentContributions
 ) => {
   try {
-    let data = await studentProfile.update(
+    let [data] = await studentProfile.update(
       { 
-        EnrollmentNo,
         UserID,
         FirstName,
         LastName,
@@ -69,11 +68,20 @@ let UpdateStudent = async (
       },
       {
         where: {
-          EnrollmentNo: EnrollmentNo,
+          EnrollmentNo
         },
       }
     );
-    return data;
+    
+    // Check if any rows were updated
+    if (data) {
+      // Fetch and return the updated testimonial
+      const updated = await studentProfile.findOne({ where: { EnrollmentNo } });
+      return updated;
+    }
+
+    // If no rows were updated, throw an error
+    throw new Error('Student not found');
   } catch (e) {
     return e;
   }

@@ -41,9 +41,8 @@ let UpdateSociety = async (
     SocietyDescription,
 ) => {
   try {
-    let data = await societyProfile.update(
+    let [data] = await societyProfile.update(
       {
-        SocietyID,
         SocietyType,
         SocietyName,
         SocietyHead,
@@ -53,11 +52,20 @@ let UpdateSociety = async (
       },
       {
         where: {
-            SocietyID: SocietyID,
+            SocietyID
         },
       }
     );
-    return data;
+
+    // Check if any rows were updated
+    if (data) {
+      // Fetch and return the updated testimonial
+      const updated = await societyProfile.findOne({ where: { SocietyID } });
+      return updated;
+    }
+
+    // If no rows were updated, throw an error
+    throw new Error('Society not found');
   } catch (e) {
     return e;
   }

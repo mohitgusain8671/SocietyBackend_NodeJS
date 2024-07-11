@@ -35,9 +35,8 @@ let UpdateAchievementSociety = async (
     DateAchieved
 ) => {
   try {
-    let data = await societyAchievements.update(
+    let [data] = await societyAchievements.update(
       {
-        SocietyID,
         SocietyAchievementID,
         Title,
         Description,
@@ -45,11 +44,21 @@ let UpdateAchievementSociety = async (
       },
       {
         where: {
-            SocietyID: SocietyID,
+            SocietyID,
         },
       }
     );
-    return data;
+
+    // Check if any rows were updated
+    if (data) {
+      // Fetch and return the updated testimonial
+      const updated = await societyAchievements.findOne({ where: { SocietyID } });
+      return updated;
+    }
+
+    // If no rows were updated, throw an error
+    throw new Error('Achievement not found');
+
   } catch (e) {
     return e;
   }

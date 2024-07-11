@@ -26,18 +26,26 @@ let UpdateMarking = async (
     StudentGrades,
 ) => {
   try {
-    let data = await studentMarking.update(
+    let [data] = await studentMarking.update(
       {
-        EnrollmentNo,
         StudentGrades,
       },
       {
         where: {
-            EnrollmentNo: EnrollmentNo,
+            EnrollmentNo
         },
       }
     );
-    return data;
+    
+    // Check if any rows were updated
+    if (data) {
+      // Fetch and return the updated testimonial
+      const updated = await studentMarking.findOne({ where: { EnrollmentNo } });
+      return updated;
+    }
+
+    // If no rows were updated, throw an error
+    throw new Error('Student not found');
   } catch (e) {
     return e;
   }

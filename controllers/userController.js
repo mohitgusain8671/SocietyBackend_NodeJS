@@ -35,9 +35,8 @@ let UpdateUser = async (
   RoleID
 ) => {
   try {
-    let data = await user.update(
+    let [data] = await user.update(
       {
-        UserID,
         Username,
         Password,
         Email,
@@ -45,11 +44,21 @@ let UpdateUser = async (
       },
       {
         where: {
-          UserID: UserID,
+          UserID
         },
       }
     );
-    return data;
+    
+    // Check if any rows were updated
+    if (data) {
+      // Fetch and return the updated testimonial
+      const updated = await user.findOne({ where: { UserID } });
+      return updated;
+    }
+
+    // If no rows were updated, throw an error
+    throw new Error('User not found');
+    
   } catch (e) {
     return e;
   }

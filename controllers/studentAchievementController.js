@@ -35,9 +35,8 @@ let UpdateAchievement = async (
     DateAchieved
 ) => {
   try {
-    let data = await studentAchievements.update(
+    let [data] = await studentAchievements.update(
       {
-        EnrollmentNo,
         AchievementID,
         Title,
         Description,
@@ -45,11 +44,21 @@ let UpdateAchievement = async (
       },
       {
         where: {
-            EnrollmentNo: EnrollmentNo,
+            EnrollmentNo
         },
       }
     );
-    return data;
+    
+    // Check if any rows were updated
+    if (data) {
+      // Fetch and return the updated testimonial
+      const updated = await studentAchievements.findOne({ where: { EnrollmentNo } });
+      return updated;
+    }
+
+    // If no rows were updated, throw an error
+    throw new Error('Student Achievement not found');
+    
   } catch (e) {
     return e;
   }

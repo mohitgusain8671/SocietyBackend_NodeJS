@@ -122,9 +122,9 @@ const {
  *       400:
  *         description: Bad request
  */
-  StudentMarkingRoute.put("/UpdateMarking", (req, res) => {
+  StudentMarkingRoute.put("/UpdateMarking/:EnrollmentNo", (req, res) => {
+    const EnrollmentNo = req.params.EnrollmentNo;
     const {
-        EnrollmentNo,
         StudentGrades,
     } = req.body;
     UpdateMarking(

@@ -145,9 +145,9 @@ user.get("/FetchAllUsers", (req, res) => {
  *       400:
  *         description: Bad request
  */
-  user.put("/UpdateUser", (req, res) => {
+  user.put("/UpdateUser/:UserID", (req, res) => {
+    const UserID = req.params.UserID;
     const {
-        UserID,
         Username,
         Password,
         Email,

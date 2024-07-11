@@ -170,10 +170,10 @@ const {
  *       400:
  *         description: Bad request
  */
-  societyEvent.put("/UpdateEvent", (req, res) => {
+  societyEvent.put("/UpdateEvent/:EventID", (req, res) => {
+    const EventID = req.params.EventID;
     const {
       SocietyID,
-      EventID,
       Title,
       Description,
       EventType,

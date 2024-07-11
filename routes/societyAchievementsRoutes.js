@@ -145,9 +145,9 @@ const {
  *       400:
  *         description: Bad request
  */
-  SocietyAchievementRoute.put("/UpdateAchievementSociety", (req, res) => {
+  SocietyAchievementRoute.put("/UpdateAchievementSociety/:SocietyID", (req, res) => {
+    const SocietyID = req.params.SocietyID;
     const {
-        SocietyID,
         SocietyAchievementID,
         Title,
         Description,

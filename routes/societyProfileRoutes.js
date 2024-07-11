@@ -163,9 +163,9 @@ const {
  *       400:
  *         description: Bad request
  */
-  societyProfileRoute.put("/UpdateSociety", (req, res) => {
+  societyProfileRoute.put("/UpdateSociety/:SocietyID", (req, res) => {
+    const SocietyID = req.params.SocietyID;
     const {
-        SocietyID,
         SocietyType,
         SocietyName,
         SocietyHead,
