@@ -90,7 +90,7 @@ let FetchAchievements = async (EnrollmentNo) => {
   try {
     let achievement = await studentAchievements.findOne({
       where: {
-        EnrollmentNo,
+        EnrollmentNo: EnrollmentNo,
       },
       attributes: ['Description'],
     });

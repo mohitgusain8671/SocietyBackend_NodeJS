@@ -115,7 +115,7 @@ let FetchStudent = async (EnrollmentNo) => {
   try {
     let student = await studentProfile.findOne({
       where: {
-        EnrollmentNo,
+        EnrollmentNo: EnrollmentNo,
       },
     });
     console.log(student);
@@ -135,7 +135,7 @@ let FetchContributions = async (EnrollmentNo) => {
   try {
     let contri = await studentProfile.findOne({
       where: {
-        EnrollmentNo,
+        EnrollmentNo: EnrollmentNo,
       },
       attributes: ['StudentContributions'],
     });

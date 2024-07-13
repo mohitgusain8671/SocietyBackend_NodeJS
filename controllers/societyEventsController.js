@@ -99,7 +99,7 @@ let FetchEvent = async (EventID) => {
   try {
     let event = await SocietyEvents.findOne({
       where: {
-        EventID,
+        EventID: EventID,
       },
     });
     console.log(event);

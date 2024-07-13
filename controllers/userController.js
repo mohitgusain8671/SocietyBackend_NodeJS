@@ -88,7 +88,7 @@ let FetchUser = async (UserID) => {
   try {
     let user = await user.findOne({
       where: {
-        UserID,
+        UserID: UserID,
       },
     });
     console.log(user);

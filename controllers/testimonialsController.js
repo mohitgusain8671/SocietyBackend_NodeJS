@@ -78,7 +78,7 @@ let FetchTestimonialID = async (EnrollmentNo) => {
   try {
     let student = await testimonials.findOne({
       where: { 
-        EnrollmentNo,
+        EnrollmentNo: EnrollmentNo,
       },
       attributes: ['TestimonialDescription'],
       include: [{

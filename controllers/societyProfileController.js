@@ -95,7 +95,7 @@ let FetchSocietyCoordinator = async (SocietyCoordinator) => {
   try {
     let society = await societyProfile.findOne({
       where: {
-        SocietyCoordinator,
+        SocietyCoordinator: SocietyCoordinator,
       },
     });
     console.log(society);
@@ -114,7 +114,7 @@ let FetchSocietyID = async (SocietyID) => {
   try {
     let society = await societyProfile.findOne({
       where: {
-        SocietyID,
+        SocietyID: SocietyID,
       },
     });
     console.log(society);
