@@ -37,7 +37,11 @@ module.exports = (sequelize, DataTypes) => {
       SocietyID: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        primaryKey: true,
+        references: {
+          model: 'societyprofiles',
+          key: 'SocietyID'
+        },
+        onDelete: 'CASCADE'
       },
       SocietyAchievementID: {
         type: DataTypes.INTEGER,

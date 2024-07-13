@@ -93,6 +93,11 @@ module.exports = (sequelize, DataTypes) => {
       SocietyName: {
         type: DataTypes.STRING,
         allowNull: false,
+        references: {
+          model: 'societyprofiles',
+          key: 'SocietyID'
+        },
+        onDelete: 'CASCADE'
       },
       SocietyPosition: {
         type: DataTypes.STRING,

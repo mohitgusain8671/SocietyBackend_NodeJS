@@ -3,7 +3,7 @@ const config = require('../config/config');
 require("dotenv").config();
 
 const sequelize = new Sequelize(
-  "sql12718619",
+  process.env.DB_NAME,
   process.env.DB_USER,
   process.env.DB_PASS,
   {
@@ -32,11 +32,11 @@ db.sequelize = sequelize;
 //load models
 db.User = require('./user')(sequelize, Sequelize);
 db.Roles = require('./roles')(sequelize, Sequelize)
+db.SocietyProfile = require('./societyProfile')(sequelize, Sequelize)
 db.SocietyEvents = require('./societyEvents')(sequelize, Sequelize)
 db.StudentProfile = require('./studentProfile')(sequelize, Sequelize)
 db.StudentAchievements = require('./studentAchievements')(sequelize, Sequelize)
 db.SocietyAchievements = require('./societyAchievements')(sequelize, Sequelize)
-db.SocietyProfile = require('./societyProfile')(sequelize, Sequelize)
 db.StudentMarking = require('./studentMarking')(sequelize,Sequelize)
 db.Testimonials = require('./testimonials')(sequelize, Sequelize)
 

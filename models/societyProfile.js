@@ -84,16 +84,19 @@ module.exports = (sequelize, DataTypes) => {
       SocietyProfile.hasMany(models.SocietyEvents, {
         foreignKey: 'SocietyID',
         as: 'societyevents',
+        onDelete: 'CASCADE'
       });
 
       SocietyProfile.hasMany(models.SocietyAchievement, {
         foreignKey: 'SocietyID',
         as: 'societyachievements',
+        onDelete: 'CASCADE'
       });
       
       SocietyProfile.hasMany(models.StudentProfile, {
         foreignKey: 'SocietyName',
         as: 'studentprofiles',
+        onDelete: 'CASCADE'
       });
 
     };
