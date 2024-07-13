@@ -47,8 +47,11 @@ module.exports = (sequelize, DataTypes) => {
       SocietyID: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        primaryKey: true,
-        autoIncrement: true, // If you want auto-increment
+        references: {
+          model: 'societyprofiles',
+          key: 'SocietyID'
+        },
+        onDelete: 'CASCADE'
       },
       EventID: {
         type: DataTypes.INTEGER,
