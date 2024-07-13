@@ -68,7 +68,7 @@ studentProfileRoute.get("/FetchAllStudents", (req, res) => {
  *              - BatchYear
  *              - MobileNo
  *              - ProfilePicture
- *              - SocietyName
+ *              - SocietyID
  *              - SocietyPosition
  *              - StudentContributions
  *             properties:
@@ -89,8 +89,8 @@ studentProfileRoute.get("/FetchAllStudents", (req, res) => {
  *               ProfilePicture:
  *                 type: string
  *                 format: binary
- *               SocietyName:
- *                 type: string
+ *               SocietyID:
+ *                 type: integer
  *               SocietyPosition:
  *                 type: string
  *               StudentContributions:
@@ -111,7 +111,7 @@ studentProfileRoute.post("/AddNewStudent", (req, res) => {
     BatchYear,
     MobileNo,
     ProfilePicture,
-    SocietyName,
+    SocietyID,
     SocietyPosition,
     StudentContributions,
   } = req.body;
@@ -124,7 +124,7 @@ studentProfileRoute.post("/AddNewStudent", (req, res) => {
     BatchYear,
     MobileNo,
     ProfilePicture,
-    SocietyName,
+    SocietyID,
     SocietyPosition,
     StudentContributions,
   )
@@ -175,8 +175,8 @@ studentProfileRoute.post("/AddNewStudent", (req, res) => {
  *               ProfilePicture:
  *                 type: string
  *                 format: binary
- *               SocietyName:
- *                 type: string
+ *               SocietyID:
+ *                 type: integer
  *               SocietyPosition:
  *                 type: string
  *               StudentContributions:
@@ -199,7 +199,7 @@ studentProfileRoute.put("/UpdateStudent/:EnrollmentNo", (req, res) => {
     BatchYear,
     MobileNo,
     ProfilePicture,
-    SocietyName,
+    SocietyID,
     SocietyPosition,
     StudentContributions,
   } = req.body;
@@ -212,7 +212,7 @@ studentProfileRoute.put("/UpdateStudent/:EnrollmentNo", (req, res) => {
     BatchYear,
     MobileNo,
     ProfilePicture,
-    SocietyName,
+    SocietyID,
     SocietyPosition,
     StudentContributions,
   )

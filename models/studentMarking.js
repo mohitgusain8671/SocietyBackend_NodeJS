@@ -22,8 +22,13 @@ module.exports = (sequelize, DataTypes) => {
       EnrollmentNo: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        references: {
+          model: 'studentprofiles',
+          key: 'EnrollmentNo'
+        },
+        onDelete: 'CASCADE',
         primaryKey: true,
-        autoIncrement: true, // If you want auto-increment
+        // autoIncrement: true, // If you want auto-increment
       },
       StudentGrades: {
         type: DataTypes.STRING,
@@ -41,6 +46,7 @@ module.exports = (sequelize, DataTypes) => {
         StudentMarkings.hasMany(models.StudentProfile, {
           foreignKey: 'EnrollmentNo',
           as: 'studentprofiles',
+          onDelete: 'CASCADE',
         });
     };
   

@@ -66,6 +66,7 @@ module.exports = (sequelize, DataTypes) => {
     User.hasOne(models.StudentProfile, {
       foreignKey: 'UserID',
       as: 'studentprofiles',
+      onDelete: 'CASCADE',
     });
 
     User.hasMany(models.Roles, {

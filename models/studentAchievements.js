@@ -37,6 +37,11 @@ module.exports = (sequelize, DataTypes) => {
       EnrollmentNo: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        references: {
+          model: 'studentprofiles',
+          key: 'EnrollmentNo'
+        },
+        onDelete: 'CASCADE',
         primaryKey: true,
       },
       AchievementID: {

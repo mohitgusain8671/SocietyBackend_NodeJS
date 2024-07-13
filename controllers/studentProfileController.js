@@ -13,7 +13,7 @@ let AddNewStudent = async (
     BatchYear,
     MobileNo,
     ProfilePicture,
-    SocietyName,
+    SocietyID,
     SocietyPosition,
     StudentContributions
 ) => {
@@ -27,7 +27,7 @@ let AddNewStudent = async (
         BatchYear,
         MobileNo,
         ProfilePicture,
-        SocietyName,
+        SocietyID,
         SocietyPosition,
         StudentContributions
     });
@@ -48,7 +48,7 @@ let UpdateStudent = async (
     BatchYear,
     MobileNo,
     ProfilePicture,
-    SocietyName,
+    SocietyID,
     SocietyPosition,
     StudentContributions
 ) => {
@@ -62,7 +62,7 @@ let UpdateStudent = async (
         BatchYear,
         MobileNo,
         ProfilePicture,
-        SocietyName,
+        SocietyID,
         SocietyPosition,
         StudentContributions
       },

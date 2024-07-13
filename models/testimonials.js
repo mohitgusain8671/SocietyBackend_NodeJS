@@ -23,6 +23,11 @@ module.exports = (sequelize, DataTypes) => {
       EnrollmentNo: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        references: {
+          model: 'studentprofiles',
+          key: 'EnrollmentNo'
+        },
+        onDelete: 'CASCADE',
         primaryKey: true,
         // autoIncrement: true, // If you want auto-increment
       },

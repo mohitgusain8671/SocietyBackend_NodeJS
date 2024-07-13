@@ -13,7 +13,7 @@
  *         - BatchYear
  *         - MobileNo
  *         - ProfilePicture
- *         - SocietyName
+ *         - SocietyID
  *         - SocietyPosition
  *         - StudentContributions
  *       properties:
@@ -41,9 +41,9 @@
  *         ProfilePicture:
  *           type: string
  *           description: student's profile image
- *         SocietyName:
- *           type: string
- *           description: The name of the society in which the student is enrolled
+ *         SocietyID:
+ *           type: integer
+ *           description: The id of the society in which the student is enrolled
  *         SocietyPosition:
  *           type: string
  *           description: The student's position in the assigned society
@@ -65,6 +65,11 @@ module.exports = (sequelize, DataTypes) => {
       UserID: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        references: {
+          model: 'users',
+          key: 'UserID'
+        },
+        onDelete: 'CASCADE'
       },
       FirstName: {
         type: DataTypes.STRING,
@@ -90,8 +95,8 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: true,
       },
-      SocietyName: {
-        type: DataTypes.STRING,
+      SocietyID: {
+        type: DataTypes.INTEGER,
         allowNull: false,
         references: {
           model: 'societyprofiles',
@@ -129,16 +134,18 @@ module.exports = (sequelize, DataTypes) => {
       StudentProfile.hasMany(models.StudentAchievement, {
         foreignKey: 'EnrollmentNo',
         as: 'studentachievements',
+        onDelete: 'CASCADE',
       });
 
       StudentProfile.belongsTo(models.SocietyProfile, {
-        foreignKey: 'SocietyName',
+        foreignKey: 'SocietyID',
         as: 'societyprofiles',
       });
 
       StudentProfile.hasMany(models.Testimonials, {
         foreignKey: 'EnrollmentNo',
         as: 'testimonials',
+        onDelete: 'CASCADE',
       });
     
     };
