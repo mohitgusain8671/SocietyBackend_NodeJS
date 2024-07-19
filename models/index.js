@@ -1,6 +1,8 @@
-const Sequelize = require('sequelize');
-const config = require('../config/config');
+const Sequelize = require("sequelize");
+const config = require("../config/config");
 require("dotenv").config();
+
+// const { Sequelize } = require("sequelize");
 
 const sequelize = new Sequelize(
   process.env.DB_NAME,
@@ -9,7 +11,12 @@ const sequelize = new Sequelize(
   {
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
-    dialect: "mysql",
+    dialect: "postgres",
+    dialectOptions: {
+      ssl: {
+        require: false,
+      },
+    },
   }
 );
 
@@ -22,26 +29,24 @@ sequelize
     console.error("Unable to connect to the database:", err);
   });
 
-
 const db = {};
-
 
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 //load models
-db.User = require('./user')(sequelize, Sequelize);
-db.Roles = require('./roles')(sequelize, Sequelize)
-db.SocietyProfile = require('./societyProfile')(sequelize, Sequelize)
-db.SocietyEvents = require('./societyEvents')(sequelize, Sequelize)
-db.StudentProfile = require('./studentProfile')(sequelize, Sequelize)
-db.StudentAchievements = require('./studentAchievements')(sequelize, Sequelize)
-db.SocietyAchievements = require('./societyAchievements')(sequelize, Sequelize)
-db.StudentMarking = require('./studentMarking')(sequelize,Sequelize)
-db.Testimonials = require('./testimonials')(sequelize, Sequelize)
+db.User = require("./user")(sequelize, Sequelize);
+db.Roles = require("./roles")(sequelize, Sequelize);
+db.SocietyProfile = require("./societyProfile")(sequelize, Sequelize);
+db.SocietyEvents = require("./societyEvents")(sequelize, Sequelize);
+db.StudentProfile = require("./studentProfile")(sequelize, Sequelize);
+db.StudentAchievements = require("./studentAchievements")(sequelize, Sequelize);
+db.SocietyAchievements = require("./societyAchievements")(sequelize, Sequelize);
+db.StudentMarking = require("./studentMarking")(sequelize, Sequelize);
+db.Testimonials = require("./testimonials")(sequelize, Sequelize);
 
 db.sequelize
-  .sync({alter: true},{force: false})
+  .sync({ alter: true }, { force: false })
   .then(() => {
     console.log("Sync Success");
   })
